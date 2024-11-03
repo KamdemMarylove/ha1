@@ -90,5 +90,47 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+
+
+    @Test
+@DisplayName("should change negative Digit in positive correctly")
+void testToggleNegativeSign() {
+    Calculator calc = new Calculator();
+
+    calc.pressDigitKey(5);
+    calc.pressNegativeKey();  
+    calc.pressNegativeKey(); 
+
+    String expected = "5";
+    String actual = calc.readScreen();
+
+    assertEquals(expected, actual);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 

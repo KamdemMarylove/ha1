@@ -14,6 +14,7 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -31,10 +32,13 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = ""; //einfach die letzte Zahl die man eingegeben hat wird angezeigt
+        // parseDouble weil Zahl erstmal noch als String gespeichert ist. Test könnte sein das warum wird screen auf " "(nichts) gesetzt wenn es die selbe Zahl ist 
         screen = screen + digit;
     }
+
+
+    
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -50,6 +54,8 @@ public class Calculator {
         latestValue = 0.0;
     }
 
+
+
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
      * Addition, Substraktion, Division, oder Multiplikation, welche zwei Operanden benötigen.
@@ -63,6 +69,9 @@ public class Calculator {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
     }
+
+
+   
 
     /**
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
@@ -130,4 +139,6 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
+
+
 }
